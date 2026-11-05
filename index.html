@@ -209,10 +209,93 @@ button {
     box-shadow: 7px 7px 0 var(--cream);
 }
 
+/* FANTASMA ANIMADO */
+
+.hero-ghost-stage {
+    position: absolute;
+    top: -92px;
+    right: 24px;
+    width: 112px;
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-ghost {
+    width: 88px;
+    height: 100px;
+    background: var(--accent);
+    border-radius: 48% 48% 15% 15%;
+    position: relative;
+    animation: float 12s ease-in-out infinite;
+    filter: drop-shadow(0 10px 14px rgba(183,240,0,.15));
+}
+
+.hero-ghost::before,
+.hero-ghost::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    width: 55%;
+    height: 27px;
+    background: var(--accent);
+    border-radius: 0 0 50% 50%;
+}
+
+.hero-ghost::before {
+    left: 0;
+    clip-path: polygon(0 0,100% 0,100% 100%,50% 55%,0 100%);
+}
+
+.hero-ghost::after {
+    right: 0;
+    clip-path: polygon(0 0,100% 0,100% 100%,50% 55%,0 100%);
+}
+
+.hero-ghost .eyes {
+    top: 37px;
+    left: 27px;
+    gap: 19px;
+}
+
+.hero-ghost .eyes i {
+    width: 9px;
+    height: 14px;
+}
+
+.hero-ghost .mouth {
+    top: 58px;
+    left: 42px;
+    width: 8px;
+    height: 5px;
+}
+
+.hero-ghost-star {
+    position: absolute;
+    color: var(--accent);
+    font-size: 20px;
+    animation: spin 36s linear infinite;
+}
+
+.hero-ghost-star.one {
+    top: 4px;
+    right: 0;
+}
+
+.hero-ghost-star.two {
+    bottom: 4px;
+    left: 0;
+    font-size: 15px;
+}
+
 /* FORMULARIO PRINCIPAL EN LA PARTE SUPERIOR */
 
 .hero-form-stage {
     width: 100%;
+    position: relative;
     max-width: 460px;
     justify-self: end;
     scroll-margin-top: 100px;
@@ -707,6 +790,15 @@ button {
     </div>
 
     <div class="hero-form-stage" id="suscripcion">
+
+        <div class="hero-ghost-stage" aria-hidden="true">
+            <div class="hero-ghost-star one">✳</div>
+            <div class="hero-ghost-star two">✦</div>
+            <div class="hero-ghost">
+                <div class="eyes"><i></i><i></i></div>
+                <div class="mouth"></div>
+            </div>
+        </div>
 
         <form class="subscribe-form" id="formulario">
 
