@@ -150,7 +150,7 @@ button {
     background: var(--black);
     color: var(--cream);
     display: grid;
-    grid-template-columns: 1.3fr .7fr;
+    grid-template-columns: 1.1fr .9fr;
     align-items: center;
     position: relative;
     overflow: hidden;
@@ -209,82 +209,34 @@ button {
     box-shadow: 7px 7px 0 var(--cream);
 }
 
-/* GHOST ILLUSTRATION */
+/* FORMULARIO PRINCIPAL EN LA PARTE SUPERIOR */
 
-.ghost-stage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    min-height: 390px;
+.hero-form-stage {
+    width: 100%;
+    max-width: 460px;
+    justify-self: end;
+    scroll-margin-top: 100px;
 }
 
-.ghost {
-    width: 220px;
-    height: 250px;
-    background: var(--accent);
-    border-radius: 48% 48% 15% 15%;
-    position: relative;
-    animation: float 12s ease-in-out infinite;
-    filter: drop-shadow(0 20px 25px rgba(183,240,0,.15));
+.hero-form-stage .subscribe-form {
+    width: 100%;
+    border: 1px solid #343434;
 }
 
-.ghost::before,
-.ghost::after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    width: 55%;
-    height: 65px;
-    background: var(--accent);
-    border-radius: 0 0 50% 50%;
-}
-
-.ghost::before {
-    left: 0;
-    clip-path: polygon(0 0,100% 0,100% 100%,50% 55%,0 100%);
-}
-
-.ghost::after {
-    right: 0;
-    clip-path: polygon(0 0,100% 0,100% 100%,50% 55%,0 100%);
-}
-
-.eyes {
-    position: absolute;
-    top: 95px;
-    left: 65px;
-    display: flex;
-    gap: 38px;
-}
-
-.eyes i {
-    display: block;
-    background: var(--black);
-    width: 17px;
-    height: 27px;
-    border-radius: 50%;
-}
-
-.mouth {
-    position: absolute;
-    top: 142px;
-    left: 104px;
-    width: 14px;
-    height: 9px;
-    background: var(--black);
-    border-radius: 50%;
-}
-
-.star {
-    position: absolute;
+.hero-form-heading {
     color: var(--accent);
-    font-size: 40px;
-    animation: spin 36s linear infinite;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 34px;
+    line-height: 1;
+    margin-bottom: 12px;
 }
 
-.star.one { top: 35px; right: 20px; }
-.star.two { bottom: 45px; left: 15px; font-size: 25px; }
+.hero-form-description {
+    color: #c4c4b9;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
 
 @keyframes float {
     0%,100% { transform: translateY(0) rotate(-4deg); }
@@ -748,27 +700,50 @@ button {
             directamente en tu bandeja de entrada.
         </p>
 
-        <a href="#suscripcion" class="hero-button">
+        <a href="#beneficios" class="hero-button">
             DESCUBRE LA EXPERIENCIA ↗
         </a>
 
     </div>
 
-    <div class="ghost-stage">
+    <div class="hero-form-stage" id="suscripcion">
 
-        <div class="star one">✳</div>
-        <div class="star two">✦</div>
+        <form class="subscribe-form" id="formulario">
 
-        <div class="ghost" aria-label="Fantasma decorativo">
-            <div class="eyes">
-                <i></i>
-                <i></i>
-            </div>
-            <div class="mouth"></div>
-        </div>
+            <div class="hero-form-heading">ÚNETE A LA COMUNIDAD</div>
+            <p class="hero-form-description">
+                Déjanos tu correo y recibe novedades, contenido especial
+                y sorpresas directamente en tu bandeja de entrada.
+            </p>
+
+            <label class="form-label" for="email">TU CORREO ELECTRÓNICO *</label>
+
+            <input
+                class="email-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="nombre@correo.com"
+                autocomplete="email"
+                required
+                maxlength="254"
+            >
+
+            <button type="submit" class="submit-button" id="boton">
+                QUIERO ENTRAR →
+            </button>
+
+            <div class="message" id="mensaje" role="status" aria-live="polite"></div>
+
+            <p class="privacy">
+                Al registrarte, aceptas recibir comunicaciones
+                de nuestra comunidad. Puedes solicitar dejar
+                de recibirlas cuando quieras.
+            </p>
+
+        </form>
 
     </div>
-
 </section>
 
 <!-- TICKER -->
@@ -816,65 +791,6 @@ button {
                 directamente en tu correo.
             </p>
         </article>
-
-    </div>
-
-</section>
-
-<!-- SUBSCRIPTION -->
-<section class="subscribe-section" id="suscripcion">
-
-    <div class="subscribe-wrapper">
-
-        <div>
-
-            <div class="section-label" style="color:var(--black);">
-                02 / YOUR NEXT STEP
-            </div>
-
-            <h2 class="subscribe-title">
-                GET IN<br>
-                THE LIST.
-            </h2>
-
-            <p class="subscribe-text">
-                Tu bandeja de entrada está a punto de tener
-                algo diferente. Déjanos tu correo y forma
-                parte de la comunidad.
-            </p>
-
-        </div>
-
-        <form class="subscribe-form" id="formulario">
-
-            <label class="form-label" for="email">
-                YOUR EMAIL ADDRESS *
-            </label>
-
-            <input
-                class="email-input"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="nombre@correo.com"
-                autocomplete="email"
-                required
-                maxlength="254"
-            >
-
-            <button type="submit" class="submit-button" id="boton">
-                QUIERO ENTRAR →
-            </button>
-
-            <div class="message" id="mensaje" role="status" aria-live="polite"></div>
-
-            <p class="privacy">
-                Al registrarte, aceptas recibir comunicaciones
-                de nuestra comunidad. Puedes solicitar dejar
-                de recibirlas cuando quieras.
-            </p>
-
-        </form>
 
     </div>
 
